@@ -1,3 +1,4 @@
+# Author: Abhishek Jawali
 AWSTemplateFormatVersion: '2010-09-09'
 Description: Resources for AWS FIS Demo. 
 
@@ -429,7 +430,7 @@ Resources:
       StopConditions:
         - Source: none
       Tags:
-        Name: StopStartInstance
+        Name: StopAndStartInstance
       Targets:
         instanceTargets:
           ResourceArns:
@@ -467,7 +468,7 @@ Resources:
               - cloudWatchAlarm
               - Arn
       Tags:
-        Name: AbortExperimentByAlarm
+        Name: AbortFiSExperimentByAlarm
       Targets:
         instanceTargets:
           ResourceArns:
@@ -536,7 +537,7 @@ Resources:
       StopConditions:
         - Source: none
       Tags:
-        Name: BurnCPUViaSSM
+        Name: StressCPUThroughSSM
       Targets:
         instanceTargets:
           ResourceArns:
@@ -578,7 +579,7 @@ Resources:
       StopConditions:
         - Source: none
       Tags:
-        Name: Terminate EKS Worker
+        Name: Terminate EKS Workers
       Targets:
         nodeGroupTarget:
           ResourceTags:

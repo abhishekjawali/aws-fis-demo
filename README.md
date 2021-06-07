@@ -36,11 +36,11 @@ eksctl create cluster -f eks_fis_cluster.yml
 ## Run Experiments
 
 ### Stop Single Instance By InstanceId
- - Start the FIS experiment `StopStartInstance` vis console.
+ - Start the FIS experiment `StopAndStartInstance` via console.
  - This will stop the EC2 instance named `FisExampleStack/instance-0` and then restart it after 1 minute.
 
 ### Abort experiment when alarm is raised
-- Start the FIS experiment `AbortExperimentByAlarm` from the console.
+- Start the FIS experiment `AbortFiSExperimentByAlarm` from the console.
 - This will stop the EC2 instance named `FisExampleStack/instance-0`
 - Raise the CloudWatch alarm via CLI: 
 ```bash
@@ -54,7 +54,7 @@ aws cloudwatch set-alarm-state --alarm-name "NetworkInAbnormal" --state-value "A
 - After the FIS experiement is completed, you can restart the instances.
 
 ### Inject CPU stress via SSM
-- Start the FIS experiment `BurnCPUViaSSM` from the console.
+- Start the FIS experiment `StressCPUThroughSSM` from the console.
 - This will induce stress into the EC2 instance named `FisExampleStack/instance-0`
 - Connect to the targeted instance via SSM
 - [Optional] Install `htop` utility to view the CPU usage details. This is similar to `top`, however gives a graphic view of CPU and Memory utilization. 
@@ -67,7 +67,7 @@ sudo yum install -y htop
 - FIS currently supports fault injection into managed node groups. 
 - Ensure that EKS cluster is created as per `eks-fis-cluster-yaml`, and the name of EKS cluster is `eks-demo`.
 - Note: When creating the EKS cluster with eksctl, default tags are created. The name of the cluster will have the tag key as ``'eksctl.cluster.k8s.io/v1alpha1/cluster-name'`.
-- Start the FIS experiment `Terminate EKS Worker` from the console. 
+- Start the FIS experiment `Terminate EKS Workers` from the console. 
 - Observe the termination of nodes. Since these are managed nodes, the ASG will bring up the number of nodes to desired state.
 
 
